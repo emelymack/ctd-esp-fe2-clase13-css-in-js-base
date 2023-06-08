@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "./Card";
+import { CharacterCard } from "./Card";
 import {createUseStyles} from 'react-jss'
 
 export interface CharacterProps {
@@ -45,7 +45,7 @@ const Character = () => {
       <h2 className={styles.title}>Algunos personajes de la serie</h2>
       <section className={styles.charactersSection}>
         {character.map((data: CharacterProps) => (
-          <Card data={data} />
+          <CharacterCard data={data} />
         ))}
       </section>
     </div>
