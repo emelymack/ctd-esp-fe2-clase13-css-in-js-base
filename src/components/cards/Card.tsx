@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
     textAlign: 'center'
   },
   gender: {
-    color: props => props.gender === 'Male' ? 'blue' : 'red'
+    color: ((props: any) => props.gender === 'Male' ? 'blue' : 'red')
   }
 })
 

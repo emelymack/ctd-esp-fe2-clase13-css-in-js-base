@@ -28,9 +28,13 @@ const useStyles = createUseStyles({
     fontWeight: 600,
     boxShadow: '6px 5px 12px #002400',
     marginRight: 20,
+    fontSize: 17,
     '&:hover': {
       background: '#002400',
       color: '#04F06A'
+    },
+    '&:active': {
+      color: 'white'
     }
   },
   buttonContainer: {
