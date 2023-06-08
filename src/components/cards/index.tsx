@@ -1,15 +1,34 @@
 import React, { useState, useEffect } from "react";
+import { Card } from "./Card";
+import {createUseStyles} from 'react-jss'
 
-// CSS-in-JS
-interface CharacterProps {
+export interface CharacterProps {
   id: number;
   image: string;
   name: string;
   gender: string;
 }
 
+const useStyles = createUseStyles({
+  container: {
+    margin: '40px 0'
+  },
+  title: {
+    textAlign: 'center',
+    color: '#273B09',
+    fontWeight: 800
+  },
+  charactersSection: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    padding: '10px 20px',
+  }
+})
+
 const Character = () => {
-  const [character, setCharacter] = useState<CharacterProps>([]);
+  const [character, setCharacter] = useState<CharacterProps[]>([]);
+  const styles = useStyles()
 
   useEffect(() => {
     const fetchCharacter = () =>
@@ -22,22 +41,14 @@ const Character = () => {
   }, []);
 
   return (
-    <>
-      <h2>Algunos personajes de la serie</h2>
-      <section>
-        {character.map((data: CharacterProps) => {
-          return (
-            <article key={data.id}>
-              <img src={data.image} alt={data.name} />
-              <div>
-                <h3>{data.name}</h3>
-                <h3>{data.gender}</h3>
-              </div>
-            </article>
-          );
-        })}
+    <div className={styles.container}>
+      <h2 className={styles.title}>Algunos personajes de la serie</h2>
+      <section className={styles.charactersSection}>
+        {character.map((data: CharacterProps) => (
+          <Card data={data} />
+        ))}
       </section>
-    </>
+    </div>
   );
 };
 
